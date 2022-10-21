@@ -1,37 +1,23 @@
-// Deliverable 1
-var emp={
-id:1,
-name:'abc',
-city:'noida'
+// lets expore function currying 
+
+// first- function currying by bind
+
+var multiply= function(x,y){
+    return x*y
 }
 
-var withstate= function(state, country){
+multiplyByTwo= multiply.bind(this,2)
+console.log(multiplyByTwo(4))
 
-    return this.city + ' '+state + ' '+ country
+// Second - function currying by closures
+
+var multiply=function(x){
+
+    return function(y){
+
+        return x*y
+    }
 }
 
-// use of call
-var a=withstate.call(emp,'up','india')
-console.log(a)
-
-// use of apply
-var b=withstate.apply(emp,['Uttar Pradesh', 'Bharat'])
-console.log(b)
-
-// use of bind
-
-var c=withstate.bind(emp)
-
-console.log(c('mumbai','maharashtra'))
-
-
-//Deliverable 2
-
-var student= {age:20}
-
-var printAge=function(){
-
-    return this.age
-}
-
-console.log(printAge.call(student))
+var multByTwo=multiply(2)
+console.log(multByTwo(4))
